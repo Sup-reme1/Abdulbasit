@@ -1,0 +1,12 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website",
+  "scripts": {},
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  },
+  "main": "index.html",
+  "author": "Supreme",
+  "license": "ISC"
+}

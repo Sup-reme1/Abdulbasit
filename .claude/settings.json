@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash('/c/Program Files \\(x86\\)/Microsoft/Edge/Application/msedge.exe' --headless=new --disable-gpu --hide-scrollbars --user-data-dir=C:/Users/HP/AppData/Local/Temp/claude/c--Users-HP-Documents-Abdulbasit-portfolio/fff4bc04-f0c9-470a-8827-25ddaf65f159/scratchpad/edge --window-size=1280,5200 --screenshot=C:/Users/HP/AppData/Local/Temp/claude/c--Users-HP-Documents-Abdulbasit-portfolio/fff4bc04-f0c9-470a-8827-25ddaf65f159/scratchpad/home.png file:///C:/Users/HP/Documents/Abdulbasit/portfolio/index.html)",
+      "Bash('/c/Program Files \\(x86\\)/Microsoft/Edge/Application/msedge.exe' --headless=new --disable-gpu --hide-scrollbars --user-data-dir=C:/Users/HP/AppData/Local/Temp/claude/c--Users-HP-Documents-Abdulbasit-portfolio/fff4bc04-f0c9-470a-8827-25ddaf65f159/scratchpad/edge --window-size=1280,6400 --screenshot=C:/Users/HP/AppData/Local/Temp/claude/c--Users-HP-Documents-Abdulbasit-portfolio/fff4bc04-f0c9-470a-8827-25ddaf65f159/scratchpad/project.png file:///C:/Users/HP/Documents/Abdulbasit/portfolio/project.html?id=automated-shoe-polishing-machine)",
+      "Bash('/c/Program Files \\(x86\\)/Microsoft/Edge/Application/msedge.exe' --headless=new --disable-gpu --hide-scrollbars --user-data-dir=C:/Users/HP/AppData/Local/Temp/claude/c--Users-HP-Documents-Abdulbasit-portfolio/fff4bc04-f0c9-470a-8827-25ddaf65f159/scratchpad/edge --window-size=390,2400 --screenshot=C:/Users/HP/AppData/Local/Temp/claude/c--Users-HP-Documents-Abdulbasit-portfolio/fff4bc04-f0c9-470a-8827-25ddaf65f159/scratchpad/mobile-exp.png file:///C:/Users/HP/Documents/Abdulbasit/portfolio/experience.html?id=exec200-software-developer-intern)"
+    ]
+  }
+}
