@@ -18,7 +18,7 @@ window.PORTFOLIO = {
       category: "academic", // academic | professional | award | personal
       featured: true,
       year: "2025",
-      role: "Lead designer and developer (sole author)",
+      // role: "Lead designer and developer (sole author)",
       context:
         "B.Sc. final year project, Department of Electronic and Computer Engineering, Lagos State University. Supervised by Prof. A.I.O. Yussuff.",
       tags: ["Embedded Systems", "Mechatronics", "Arduino", "C++", "Motion Control", "Fusion 360", "KiCad"],
@@ -177,19 +177,52 @@ void loop() {
 
     {
       id: "electronic-id-card-system",
-      title: "Electronic ID Card System",
-      subtitle: "Embedded systems and smart security: RFID/NFC identity verification.",
+      title: "Kaaadi: Smart E-Paper Electronic ID Card",
+      subtitle: "Embedded systems and smart security: an NFC-enabled ID badge with an e-paper display, designed down to the PCB.",
       category: "academic",
+      featured: true,
       year: "",
-      role: "Co-designer and firmware developer",
-      tags: ["Embedded Systems", "RFID/NFC", "Security", "Low-power design"],
+      role: "Co-designer: hardware architecture, PCB and firmware",
+      tags: ["Embedded Systems", "PCB Design", "NFC", "E-Paper", "Low-power design", "KiCad"],
+      cover: {
+        src: "assets/projects/kaaadi/render-card-and-pcb.jpg",
+        alt: "3D render of the Kaaadi e-paper ID card, its enclosure and the populated PCB",
+      },
       summary:
-        "A prototype electronic ID card system that combines embedded microcontrollers, RFID/NFC modules and secure data storage for identity verification.",
-      approach: [
-        { title: "Hardware", text: "Designed low-power circuit schematics and hardware architecture for portable, handheld operation." },
-        { title: "Firmware", text: "Programmed firmware to manage encrypted data transmission between the smart card and authentication readers, for secure access control." },
+        "A prototype electronic ID card that shows the holder's identity and daily timetable on an ultra-low-power e-paper display. It uses NFC and secure on-board storage for identity verification, all on a custom PCB.",
+      highlights: [
+        { value: "6", label: "Hardware subsystems on one board" },
+        { value: "NFC", label: "Coil antenna for identity verification" },
+        { value: "E-paper", label: "Holds its image with zero power" },
       ],
-      skills: ["Firmware", "RFID/NFC", "Low-power circuit design", "Encryption basics"],
+      problem: [
+        "Printed ID cards are static: they can't be updated, are easy to forge, and carry no verification data. The aim was a card that can be verified electronically, update what it shows, and still run for long periods on a small battery.",
+      ],
+      approach: [
+        {
+          title: "System architecture",
+          text: "Split the design into hierarchical KiCad sheets: MCU, power, display, external storage, IMU, real-time clock and piezo speaker. An I²C bus with shared pull-ups links the IMU, RTC, fuel gauge and piezo driver, and an SPI link drives the e-paper display.",
+        },
+        {
+          title: "Low-power hardware",
+          text: "Chose an e-paper display (draws power only when the image changes), a battery fuel gauge for charge monitoring, an RTC for timekeeping, and an IMU that can wake the MCU on motion. This lets the card spend most of its time asleep for portable, handheld use.",
+        },
+        {
+          title: "PCB layout",
+          text: "Laid out a compact board with an on-board NFC coil antenna, a 2.4 GHz PCB trace antenna, QSPI external flash, USB and battery connectors, then rendered it in 3D with the enclosure to check fit before fabrication.",
+        },
+        {
+          title: "Firmware",
+          text: "Programmed firmware to handle encrypted data exchange between the card and authentication readers for secure access control, and to refresh the display with identity and schedule data.",
+        },
+      ],
+      gallery: [
+        { group: "Design", src: "assets/projects/kaaadi/architecture-diagram.png", caption: "Hierarchical system architecture (KiCad): MCU, power, IMU, RTC, piezo, external storage and display" },
+        { group: "Design", src: "assets/projects/kaaadi/pcb-layout.jpg", caption: "PCB layout, both sides: NFC coil, 2.4 GHz antenna, MCU and flash" },
+        { group: "Design", src: "assets/projects/kaaadi/render-card-and-pcb.jpg", caption: "3D render: the card showing ID and timetable, enclosure and PCB (coins for scale)" },
+        { group: "Design", src: "assets/projects/kaaadi/render-card-views.jpg", caption: "Card and enclosure views" },
+      ],
+      skills: ["Hardware architecture", "KiCad schematic & PCB", "I²C / SPI / QSPI", "NFC", "Low-power design", "Firmware", "3D rendering"],
     },
 
     {
@@ -199,7 +232,8 @@ void loop() {
       category: "academic",
       year: "",
       role: "Developer",
-      tags: ["IoT", "Arduino", "GSM", "UART", "Sensors"],
+      context: "Laboratory project, Electronic and Computer Engineering Laboratory, Lagos State University.",
+      tags: ["Lab Work", "IoT", "Arduino", "GSM", "UART", "Sensors"],
       summary:
         "An automated home-monitoring setup that uses an Arduino and a GSM module to send remote status alerts.",
       approach: [
@@ -213,34 +247,159 @@ void loop() {
       id: "bluetooth-robotic-car",
       title: "Bluetooth-Controlled 4-Wheel Robotic Car",
       subtitle: "Mobile robot with differential steering over HC-05 Bluetooth.",
-      category: "personal",
-      year: "",
-      role: "Designer and builder",
-      tags: ["Robotics", "Arduino", "Bluetooth", "Motor Control"],
+      category: "academic",
+      year: "2023",
+      // role: "Designer and builder",
+      context: "Laboratory project, Electronic and Computer Engineering Laboratory, Lagos State University.",
+      tags: ["Lab Work", "Robotics", "Arduino", "Bluetooth", "Motor Control"],
+      cover: {
+        src: "assets/projects/bluetooth-robotic-car/finished-car.jpg",
+        alt: "The finished four-wheel robotic car with Arduino and breadboard",
+      },
       summary:
         "A four-wheel mobile robot built on an Arduino controller, dual H-bridge motor drivers and an HC-05 Bluetooth serial interface.",
+      highlights: [
+        { value: "4", label: "Independently driven DC gear motors" },
+        { value: "HC-05", label: "Bluetooth serial control" },
+      ],
       approach: [
+        { title: "Mechanical assembly", text: "Assembled the two-deck chassis, then soldered and mounted four DC gear motors with their wheels." },
         { title: "Firmware", text: "Wrote custom firmware that parses incoming serial data and applies real-time differential steering and speed control." },
         { title: "Power design", text: "Designed the power distribution to keep motor noise away from the logic circuitry, which stopped the controller from resetting." },
       ],
-      skills: ["Motor drivers (H-bridge)", "Serial parsing", "Power isolation", "Robotics"],
+      gallery: [
+        { group: "Build", src: "assets/projects/bluetooth-robotic-car/build-soldering.jpg", caption: "Soldering motor leads in the lab" },
+        { group: "Build", src: "assets/projects/bluetooth-robotic-car/assembly-guide.jpg", caption: "Chassis assembly guide" },
+        { group: "Build", src: "assets/projects/bluetooth-robotic-car/chassis-parts.jpg", caption: "Chassis plates, motors and wheels before assembly" },
+        { group: "Build", src: "assets/projects/bluetooth-robotic-car/motors-mounted.jpg", caption: "All four gear motors mounted and wired" },
+        { group: "Finished robot", src: "assets/projects/bluetooth-robotic-car/finished-car.jpg", caption: "Completed car during firmware upload" },
+        { group: "Finished robot", src: "assets/projects/bluetooth-robotic-car/finished-car-electronics.jpg", caption: "Top deck: Arduino, breadboard and battery pack" },
+      ],
+      skills: ["Motor drivers (H-bridge)", "Serial parsing", "Power isolation", "Soldering", "Robotics"],
     },
 
     {
       id: "sound-detector-alarm",
       title: "Sound Detector Safety Alarm System",
-      subtitle: "Interrupt-driven acoustic safety alarm.",
+      subtitle: "Battery-powered, interrupt-driven acoustic intrusion alarm, built to a client brief.",
       category: "academic",
-      year: "",
-      role: "Developer",
-      tags: ["Embedded Systems", "Interrupts", "Signal Conditioning"],
+      year: "2023–2024",
+      // role: "Designer and developer",
+      context:
+        "Built to monitor quiet offices after closing hours. Started from a written proposal with a costed bill of materials (Nov 2023) and delivered in Jan 2024.",
+      tags: ["Embedded Systems", "Arduino", "Interrupts", "Signal Conditioning", "Battery Management"],
+      cover: {
+        src: "assets/projects/sound-detector-alarm/finished-running.jpg",
+        alt: "The finished sound detector alarm with its LCD showing the start-up screen",
+      },
       summary:
         "A real-time, event-triggered safety system using high-sensitivity acoustic sensors, a microcontroller, and visual and audible outputs.",
+      problem: [
+        "An office needed to know about any sound after hours, such as a possible intruder, without a full security system. The device had to show a notification on screen, sound a loud alarm for security staff, and run from its own rechargeable battery.",
+      ],
       approach: [
+        { title: "Signal acquisition", text: "Read the acoustic sensor through the microcontroller's ADC, sampling fast enough to capture short sound events (following the Nyquist criterion), then quantising them into digital levels." },
         { title: "Noise rejection", text: "Calibrated the hardware threshold and added software debouncing to cut false triggers from background noise." },
         { title: "Latency", text: "Used interrupt-driven routines so the alarm responds within a millisecond of the threshold being crossed." },
+        // { title: "Battery management", text: "A 7.4 V 18650 Li-ion pack with a charging module and buck converter. The LCD shows battery percentage measured through a voltage divider, and a transistor switch allows checking battery level while charging to avoid overcharging." },
       ],
-      skills: ["Interrupts", "Debouncing", "Sensor calibration"],
+      results: [
+        "Delivered a self-contained unit: an I²C LCD for notifications and battery status, a 3–24 V piezo siren for alarms, all in a sealed ABS enclosure.",
+      ],
+      gallery: [
+        { group: "Components & prototyping", src: "assets/projects/sound-detector-alarm/components.jpg", caption: "Arduino Uno, LCD, sound sensor, charging module, switch and buzzer" },
+        { group: "Components & prototyping", src: "assets/projects/sound-detector-alarm/lcd-test.jpg", caption: "Bench-testing the I²C LCD" },
+        { group: "Components & prototyping", src: "assets/projects/sound-detector-alarm/firmware-code.jpg", caption: "LCD test firmware in the Arduino IDE" },
+        { group: "Components & prototyping", src: "assets/projects/sound-detector-alarm/battery-pack.jpg", caption: "7.4 V 2600 mAh 18650 battery pack" },
+        { group: "Components & prototyping", src: "assets/projects/sound-detector-alarm/buzzer.jpg", caption: "3–24 V piezo siren" },
+        { group: "Assembly", src: "assets/projects/sound-detector-alarm/enclosure.jpg", caption: "ABS enclosure before machining" },
+        { group: "Assembly", src: "assets/projects/sound-detector-alarm/internal-wiring.jpg", caption: "Internal wiring" },
+        { group: "Assembly", src: "assets/projects/sound-detector-alarm/assembly.jpg", caption: "Fitting the electronics into the enclosure" },
+        { group: "Finished device", src: "assets/projects/sound-detector-alarm/finished-front.jpg", caption: "Front panel with LCD window" },
+        { group: "Finished device", src: "assets/projects/sound-detector-alarm/finished-running.jpg", caption: "Powered on and initialising" },
+      ],
+      videos: [
+        // Large clips: upload to Google Drive (Anyone with the link → Viewer) and paste the share link here, e.g.
+        { embed: "https://drive.google.com/file/d/1dZMAfiAPURneS_nVMg4N0lj4gtsKwUBo/view?usp=sharing", caption: "Alarm Init" },
+        { embed: "https://drive.google.com/file/d/1UIlTlKP1pN3fIKsn4Pgn0hAnhXcyqH3J/view?usp=sharing", caption: "Alarm triggering on a sound event" },
+      ],
+      skills: ["ADC sampling", "Interrupts", "Debouncing", "Sensor calibration", "Li-ion charging", "Voltage dividers", "Client proposals"],
+    },
+
+    {
+      id: "gas-detector-alarm",
+      title: "Gas Detector Alarm",
+      subtitle: "Portable sensor-based gas detector that shows concentration on an LCD and sounds an alarm.",
+      category: "academic",
+      year: "2023",
+      // role: "Enclosure Design",
+      tags: ["Embedded Systems", "Arduino", "Gas Sensing", "Safety", "Battery-powered"],
+      cover: {
+        src: "assets/projects/gas-detector-alarm/lcd-reading.jpg",
+        alt: "Gas detector LCD showing a concentration reading",
+      },
+      summary:
+        "A handheld, battery-powered detector that reads an MQ-series gas sensor, shows the measured concentration on an LCD, and sounds a loud alarm when the level passes a safe threshold.",
+      problem: [
+        "Gas leaks and harmful vapours are often invisible and odourless at dangerous levels. A cheap, portable detector that alerts people immediately can prevent accidents at home and in workshops.",
+      ],
+      approach: [
+        { title: "Sensing", text: "An MQ-series gas sensor mounted on the lid; its analogue output is read by the microcontroller's ADC and converted to a concentration value (the photos show the BAC % mode used for alcohol vapour)." },
+        { title: "Alarm logic", text: "Firmware compares each reading with a set threshold and drives a piezo siren when it is exceeded, while the LCD shows the live reading." },
+        { title: "Power", text: "A rechargeable Li-ion cell with a charging module and DC-DC converter, so the unit is fully portable." },
+        { title: "Enclosure", text: "All electronics fitted into a compact enclosure, with the sensor and LCD on the lid and the siren on the side." },
+      ],
+      gallery: [
+        { group: "Build", src: "assets/projects/gas-detector-alarm/internal-wiring.jpg", caption: "Internal wiring before closing the enclosure" },
+        { group: "Build", src: "assets/projects/gas-detector-alarm/controller-and-battery.jpg", caption: "Microcontroller board and Li-ion battery" },
+        { group: "Build", src: "assets/projects/gas-detector-alarm/power-modules.jpg", caption: "Charging and DC-DC converter modules" },
+        { group: "Build", src: "assets/projects/gas-detector-alarm/lid-sensor-lcd.jpg", caption: "Lid with LCD and gas sensor" },
+        { group: "Build", src: "assets/projects/gas-detector-alarm/buzzer.jpg", caption: "Piezo siren" },
+        { group: "Finished device", src: "assets/projects/gas-detector-alarm/finished-device.jpg", caption: "Finished detector, powered on" },
+        { group: "Finished device", src: "assets/projects/gas-detector-alarm/lcd-reading.jpg", caption: "Live concentration reading" },
+      ],
+      videos: [
+        { src: "assets/projects/gas-detector-alarm/demo.mp4", caption: "Demonstration" },
+        // Larger clip: upload "VID_20231218_083214.mp4" to Google Drive and paste the share link:
+        // { embed: "https://drive.google.com/file/d/FILE_ID/view?usp=sharing", caption: "Alarm test" },
+      ],
+      skills: ["Analogue sensing / ADC", "Threshold alarms", "Li-ion charging", "Enclosure fabrication"],
+    },
+
+    {
+      id: "iot-battery-charger",
+      title: "IoT Battery Charger",
+      subtitle: "AC-to-DC charging prototype with a user-selectable output voltage to match the battery being charged.",
+      category: "academic",
+      year: "2023",
+      // role: "Designer and builder",
+      tags: ["Power Electronics", "IoT", "Embedded Systems", "Battery Charging"],
+      cover: {
+        src: "assets/projects/iot-battery-charger/front-panel.jpg",
+        alt: "Front panel of the battery charger with LCD, keypad and output terminals",
+      },
+      summary:
+        "A charging unit that converts AC mains to DC and lets the user set the output to the battery's voltage. A microcontroller, LCD and keypad provide control and status, and relays handle switching.",
+      problem: [
+        "Batteries come in different voltages, and most simple chargers are fixed to one. Charging at the wrong voltage shortens battery life or is dangerous. The aim was one charger that adapts to the battery connected to it.",
+      ],
+      approach: [
+        { title: "Power conversion", text: "Converts AC mains to DC, then regulates it with DC-DC converter modules to the voltage required by the battery." },
+        { title: "User interface", text: "An LCD and a four-key keypad on the front panel let the user select and confirm the target battery voltage and see charging status." },
+        { title: "Control & switching", text: "A microcontroller reads the user's selection and drives a relay module to switch the charging path safely." },
+        { title: "Enclosure", text: "Measured, marked and drilled an IP-rated enclosure, then mounted all modules inside with front-panel terminals, a power switch and a mains socket." },
+      ],
+      gallery: [
+        { group: "Planning & build", src: "assets/projects/iot-battery-charger/components-layout.jpg", caption: "Planning the panel layout: LCD, keypad, relay module and converters" },
+        { group: "Planning & build", src: "assets/projects/iot-battery-charger/enclosure-marking.jpg", caption: "Marking cut-outs on the enclosure" },
+        { group: "Planning & build", src: "assets/projects/iot-battery-charger/enclosure-drilled.jpg", caption: "Enclosure drilled and prepared" },
+        { group: "Planning & build", src: "assets/projects/iot-battery-charger/modules-mounted.jpg", caption: "Relay, converter and control modules mounted" },
+        { group: "Planning & build", src: "assets/projects/iot-battery-charger/final-wiring.jpg", caption: "Final internal wiring" },
+        { group: "Finished unit", src: "assets/projects/iot-battery-charger/front-panel.jpg", caption: "Front panel: LCD, keypad and output terminals" },
+        { group: "Finished unit", src: "assets/projects/iot-battery-charger/side-switch-socket.jpg", caption: "Mains socket and power switch" },
+        { group: "Finished unit", src: "assets/projects/iot-battery-charger/output-terminals.jpg", caption: "Output terminals connected" },
+      ],
+      skills: ["AC-DC conversion", "DC-DC regulation", "Relay control", "Keypad & LCD interfaces", "Enclosure fabrication"],
     },
 
     {
@@ -250,7 +409,8 @@ void loop() {
       category: "academic",
       year: "",
       role: "Experimenter",
-      tags: ["Digital Electronics", "Semiconductors", "Lab Work"],
+      context: "Laboratory project, Electronic and Computer Engineering Laboratory, Lagos State University.",
+      tags: ["Lab Work", "Digital Electronics", "Semiconductors"],
       summary:
         "Designed and verified the basic logic gates (AND, OR, NOT, NAND, NOR) using only discrete bipolar junction transistors and MOSFETs.",
       approach: [
@@ -263,18 +423,43 @@ void loop() {
     {
       id: "lms-backend",
       title: "Learning Management System (Backend)",
-      subtitle: "REST backend with role-based access control.",
-      category: "personal",
-      year: "",
+      subtitle: "PLP Academy graduation project supporting UN SDG 4: Quality Education.",
+      category: "academic",
+      year: "2024",
       role: "Backend developer",
-      tags: ["Software Engineering", "Node.js", "MySQL", "REST API", "RBAC"],
+      context:
+        "Graduation (capstone) project for the 16-week PLP Academy Software Development programme, completed December 2024. Built around UN Sustainable Development Goal 4: ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.",
+      tags: ["Software Engineering", "SDG 4", "Node.js", "MySQL", "REST API", "RBAC"],
       summary:
-        "A scalable backend service with full CRUD functionality for managing users and distributing digital learning resources.",
-      approach: [
-        { title: "Access control", text: "Implemented role-based access control (RBAC) for administrator, instructor and student roles." },
-        { title: "Data", text: "Designed normalised MySQL schemas for fast queries and data integrity." },
+        "A scalable backend service for a learning management system, with full CRUD functionality for managing users, courses and digital learning resources. It is designed to widen access to quality education by making learning materials easy to publish, organise and reach.",
+      problem: [
+        "Many learners, especially in under-resourced communities, lack organised access to course materials and structured learning. Instructors also need a simple way to publish and manage content.",
+        "In line with SDG 4 (Quality Education), the goal was a secure, scalable backend that lets institutions and independent instructors deliver learning resources to students reliably.",
       ],
-      skills: ["Node.js / Express", "REST APIs", "MySQL", "RBAC", "Database design"],
+      objectives: [
+        "Provide a REST API for managing users, courses and learning resources.",
+        "Enforce secure, role-appropriate access for administrators, instructors and students.",
+        "Design a data model that keeps records consistent and queries fast as usage grows.",
+      ],
+      approach: [
+        { title: "API design", text: "Built a RESTful API with Node.js and Express exposing full CRUD operations for users, courses and learning resources." },
+        { title: "Access control", text: "Implemented role-based access control (RBAC) for administrator, instructor and student roles, so each user sees and changes only what their role allows." },
+        { title: "Data", text: "Designed normalised MySQL schemas for fast queries and data integrity." },
+        { title: "Security", text: "Applied the authentication practices covered in the programme (JWT-based sessions and protected routes) to secure the endpoints." },
+      ],
+      learnings: [
+        "Turning a global development goal (SDG 4) into concrete software requirements.",
+        "Designing a backend architecture with clear separation of roles and responsibilities.",
+        "Relational data modelling and normalisation for real-world entities such as users, courses and enrolments.",
+      ],
+      // futureWork: [
+      //   "Offline-first or low-bandwidth delivery of learning materials for areas with poor connectivity.",
+      //   "Learning analytics to identify students who need extra support.",
+      // ],
+      documents: [
+        { label: "PLP Academy certificate (PDF)", href: "documents/certificates/plp-software-development-2024.pdf" },
+      ],
+      skills: ["Node.js / Express", "REST APIs", "MySQL", "RBAC", "JWT authentication", "Database design", "Requirements analysis"],
     },
 
     {
@@ -347,7 +532,7 @@ void loop() {
         "Guided students in the safe and correct use of lab equipment.",
       ],
       skills: ["Lab instrumentation", "Mentoring", "Lab safety"],
-      relatedProjects: ["transistor-level-logic-gates"],
+      relatedProjects: ["transistor-level-logic-gates", "bluetooth-robotic-car", "smart-home-iot-monitoring"],
     },
     {
       id: "mssn-graphic-designer",
@@ -370,4 +555,19 @@ void loop() {
       skills: ["Machine operation", "Workshop safety", "Fabrication"],
     },
   ],
+
+  /*
+   * DESIGN PORTFOLIO (homepage "Design work" section).
+   * The section stays hidden until driveUrl is filled in.
+   * driveUrl: share link to the Google Drive folder (set sharing to "Anyone with the link → Viewer").
+   * items: optional highlight images stored locally, e.g. assets/design/flyer-1.jpg
+   */
+  design: {
+    driveUrl: "https://drive.google.com/drive/folders/1e4075egdIgB5mlb58gJzFNra97Rqs71s?usp=sharing",
+    description:
+      "Graphic design work for events and publications, created as a volunteer designer for MSSN, LASU Epe Campus.",
+    items: [
+      // { src: "assets/design/event-flyer.jpg", caption: "Event flyer" },
+    ],
+  },
 };

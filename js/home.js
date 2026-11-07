@@ -31,6 +31,34 @@
     render("all");
   }
 
+  // Design work: shown only once a Google Drive folder link is set in data.js.
+  const designSection = document.querySelector("[data-design]");
+  const design = window.PORTFOLIO.design;
+  if (designSection && design && design.driveUrl) {
+    const folder = design.driveUrl.match(/\/folders\/([\w-]+)/);
+    const items = (design.items || [])
+      .map(
+        (d) => `
+        <figure>
+          <a class="gallery-item" href="${esc(design.driveUrl)}" target="_blank" rel="noopener">
+            <img src="${esc(d.src)}" alt="${esc(d.caption || "Design work")}" loading="lazy" />
+          </a>
+          ${d.caption ? `<figcaption>${esc(d.caption)}</figcaption>` : ""}
+        </figure>`
+      )
+      .join("");
+    designSection.querySelector("[data-design-body]").innerHTML = `
+      ${design.description ? `<p class="subtle">${esc(design.description)}</p>` : ""}
+      ${items ? `<div class="gallery top-gap">${items}</div>` : ""}
+      ${
+        folder && !items
+          ? `<div class="drive-embed top-gap"><iframe src="https://drive.google.com/embeddedfolderview?id=${esc(folder[1])}#grid" title="Design portfolio on Google Drive" loading="lazy"></iframe></div>`
+          : ""
+      }
+      <a class="btn primary drive-btn" href="${esc(design.driveUrl)}" target="_blank" rel="noopener">View the full design portfolio on Google Drive →</a>`;
+    designSection.hidden = false;
+  }
+
   const timeline = document.querySelector("[data-experience]");
   if (timeline) {
     timeline.innerHTML = experience

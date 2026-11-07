@@ -1,0 +1,12 @@
+# Raw source folders (full-size photos and videos). The site uses the
+# resized copies in assets/projects/ and documents/ instead.
+Four Wheel Robotic Car*/
+Gas Detector Alarm/
+IOT_Battery_Based_Charger/
+Kaaadi/
+Sound Detector Alarm/
+awards/
+*.mp4
+!assets/projects/**/*.mp4
+
+node_modules/

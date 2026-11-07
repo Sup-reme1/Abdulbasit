@@ -87,6 +87,18 @@
         .join("");
     }
 
+    const videos = has(p.videos)
+      ? `<div class="video-grid">${p.videos
+          .map((v) => {
+            const embed = v.embed && toEmbedUrl(v.embed);
+            const player = embed
+              ? `<div class="video-frame"><iframe src="${esc(embed)}" title="${esc(v.caption || p.title)}" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>`
+              : `<video controls preload="metadata" playsinline${v.poster ? ` poster="${esc(v.poster)}"` : ""}><source src="${esc(v.src)}#t=0.1" type="video/mp4" /></video>`;
+            return `<figure>${player}${v.caption ? `<figcaption>${esc(v.caption)}</figcaption>` : ""}</figure>`;
+          })
+          .join("")}</div>`
+      : "";
+
     const docs = [...(p.documents || []), ...(p.links || [])];
     const docLinks = has(docs)
       ? `<div class="doc-links">${docs
@@ -126,6 +138,7 @@
         ${section("What I learned", has(p.learnings) && bullets(p.learnings))}
         ${section("Future work &amp; research directions", has(p.futureWork) && bullets(p.futureWork))}
         ${section("Gallery", gallery, "gallery")}
+        ${section("Videos", videos, "videos")}
         ${section("Documentation", docLinks)}
         ${section("Skills demonstrated", has(p.skills) && `<ul class="chip-list">${p.skills.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>`)}
         ${pager}

@@ -58,6 +58,15 @@ window.esc = function (value) {
     .replace(/"/g, "&quot;");
 };
 
+// Turns a Google Drive or YouTube share link into an embeddable player URL.
+window.toEmbedUrl = function (url) {
+  const drive = url.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([\w-]+)/);
+  if (drive) return `https://drive.google.com/file/d/${drive[1]}/preview`;
+  const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([\w-]+)/);
+  if (yt) return `https://www.youtube.com/embed/${yt[1]}`;
+  return url;
+};
+
 window.CATEGORY_LABELS = {
   academic: "Academic",
   professional: "Professional",

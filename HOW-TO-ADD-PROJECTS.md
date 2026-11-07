@@ -162,7 +162,55 @@ To change the main image, edit the project's `cover.src`.
 
 ---
 
-## 4. Common mistakes
+## 4. Add videos to a project
+
+Add a `videos` list to the project in `js/data.js`. Two kinds are supported:
+
+```js
+      videos: [
+        // A) Small video stored in the site (keep under ~10 MB)
+        { src: "assets/projects/gas-detector-alarm/demo.mp4", caption: "Demonstration" },
+
+        // B) Large video on Google Drive or YouTube, played in an embedded player
+        { embed: "https://drive.google.com/file/d/FILE_ID/view?usp=sharing", caption: "Alarm test" },
+        { embed: "https://youtu.be/VIDEO_ID", caption: "Robot driving demo" },
+      ],
+```
+
+**Use Google Drive or YouTube for anything bigger than ~10 MB.** Phone videos are often 50–100 MB:
+they make the site slow, and GitHub rejects files over 100 MB.
+
+To get a Google Drive link:
+
+1. Upload the video to Google Drive.
+2. Right-click it → **Share** → under *General access* choose **Anyone with the link** (Viewer).
+3. Click **Copy link** and paste it as the `embed` value. The site converts it into a player automatically.
+
+Drive may take a few minutes after uploading before the video can play.
+
+---
+
+## 5. Show your design portfolio from Google Drive
+
+In `js/data.js`, at the bottom, find `design:` and paste your Drive **folder** link into `driveUrl`:
+
+```js
+  design: {
+    driveUrl: "https://drive.google.com/drive/folders/FOLDER_ID?usp=sharing",
+    description: "Graphic design work for events and publications…",
+    items: [],
+  },
+```
+
+- The folder must be shared as **Anyone with the link → Viewer**.
+- With `items` empty, the homepage shows a browsable preview of the folder plus a "View on Google Drive" button.
+- To show your best pieces as large images instead, export them as JPG into `assets/design/` and list them:
+  `items: [{ src: "assets/design/event-flyer.jpg", caption: "Event flyer" }]`. Each one links to the Drive folder.
+- The "Design work" section stays hidden while `driveUrl` is empty.
+
+---
+
+## 6. Common mistakes
 
 | Symptom | Cause |
 | --- | --- |
@@ -174,7 +222,7 @@ To change the main image, edit the project's `cover.src`.
 
 ---
 
-## 5. Folder reference
+## 7. Folder reference
 
 ```
 index.html                 homepage (static sections: about, education, skills, etc.)
