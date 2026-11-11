@@ -240,7 +240,7 @@ void loop() {
       //   { title: "Communication", text: "Set up low-level serial communication (UART / AT commands) for real-time cellular data and event notifications." },
       //   { title: "Sensing", text: "Connected several environmental sensors, with threshold-detection logic that sends remote notifications when a safety limit is breached." },
       // ],
-      skills: ["Arduino", "GSM / AT commands", "UART", "Sensor thresholds"],
+      skills: ["Arduino", "UART", "Sensor thresholds"],
     },
 
     {
