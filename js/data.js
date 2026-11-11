@@ -182,7 +182,7 @@ void loop() {
       category: "academic",
       featured: true,
       year: "",
-      role: "Co-designer: hardware architecture, PCB and firmware",
+      role: "Co-designer: hardware enclosure",
       tags: ["Embedded Systems", "PCB Design", "NFC", "E-Paper", "Low-power design", "KiCad"],
       cover: {
         src: "assets/projects/kaaadi/render-card-and-pcb.jpg",
@@ -228,18 +228,18 @@ void loop() {
     {
       id: "smart-home-iot-monitoring",
       title: "Smart Home IoT Monitoring System",
-      subtitle: "Arduino + GSM remote alerting for home safety.",
+      subtitle: "Arduino + Bluetooth Connection.",
       category: "academic",
       year: "",
       role: "Developer",
       context: "Laboratory project, Electronic and Computer Engineering Laboratory, Lagos State University.",
-      tags: ["Lab Work", "IoT", "Arduino", "GSM", "UART", "Sensors"],
+      tags: ["Lab Work", "IoT", "Arduino", "Bluetooth Module", "UART", "Sensors"],
       summary:
-        "An automated home-monitoring setup that uses an Arduino and a GSM module to send remote status alerts.",
-      approach: [
-        { title: "Communication", text: "Set up low-level serial communication (UART / AT commands) for real-time cellular data and event notifications." },
-        { title: "Sensing", text: "Connected several environmental sensors, with threshold-detection logic that sends remote notifications when a safety limit is breached." },
-      ],
+        "Engineered an automated home monitoring and control framework using an Arduino microcontroller paired with an HC-05 Bluetooth module for real-time mobile interaction.",
+      // approach: [
+      //   { title: "Communication", text: "Set up low-level serial communication (UART / AT commands) for real-time cellular data and event notifications." },
+      //   { title: "Sensing", text: "Connected several environmental sensors, with threshold-detection logic that sends remote notifications when a safety limit is breached." },
+      // ],
       skills: ["Arduino", "GSM / AT commands", "UART", "Sensor thresholds"],
     },
 
